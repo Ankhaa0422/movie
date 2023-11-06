@@ -1,0 +1,18 @@
+.BackgroundImage {
+    height: 100% !important;
+  
+    background: {
+        size: cover;
+        position: center;
+    }
+}
+
+.Wrapper > div:last-child:not(.BackgroundImage) {
+    z-index: 0;
+    animation: loading 1.25s infinite;
+    pointer-events: none;
+  
+    &::before {
+      content: none;
+    }
+  }
