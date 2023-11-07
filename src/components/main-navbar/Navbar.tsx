@@ -9,8 +9,8 @@ const Navbar = () => {
     const router = useRouter()
     const navigateHome = () => router.push('/')
 
-    return <Headroom upTolerance={1}>
-        <nav className='w-full h-[40px] bg-[#312f3f]'>
+    return <Headroom upTolerance={1} className='!z-[999999] fixed left-0 top-0 w-full'>
+        <nav className='w-full h-[40px] bg-[#312f3f] bg-opacity-50 backdrop-blur'>
             <section className='container w-full h-full mx-auto flex flex-row justify-between items-center px-4'>
                 <div className='logo w-fit h-fit cursor-pointer' onClick={navigateHome} >FilmBridge</div>
                 <div>
