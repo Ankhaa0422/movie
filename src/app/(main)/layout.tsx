@@ -11,14 +11,14 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
-  return (
-    <html lang="en">
-      <body className={`inter.className bg-[#1c1a27] text-zinc-100`}>
-        <Navbar/>
-        <AnimatePresence mode='wait'>
-            {children}
-        </AnimatePresence>
-      </body>
-    </html>
-  )
+    return (
+        <html lang="en">
+            <body className={`inter.className bg-[#1c1a27] text-zinc-100`}>
+              <AnimatePresence mode='wait'>
+                <Navbar/>
+                {children}
+              </AnimatePresence>
+            </body>
+        </html>
+    )
 }

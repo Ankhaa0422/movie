@@ -1,4 +1,4 @@
-import { Data } from "@/app/(main)/page";
+import { Data } from '@/utility/interfaceAndTypes';
 import React from "react";
 import SliderCard from "./SliderCard";
 
