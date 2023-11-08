@@ -1,15 +1,19 @@
 import React from "react";
 import { motion } from "framer-motion";
-
+import { defaultZurgiinKhemjeegeerHeightBodyo } from "@/utility";
 type Props = {
   data: any;
 };
 
 function SliderCard({ data }: Props) {
+    const [hover, setHover] = React.useState(false)
     return (
         <motion.div
-            className=" relative h-52 min-w-[250px] rounded-2xl shadow-md md:h-80 md:min-w-[208px]"
+            className=" relative rounded shadow-md w-[208px] min-w-[208px] max-w-[208px] cursor-pointer overflow-hidden"
             layout
+            style={{
+                height: defaultZurgiinKhemjeegeerHeightBodyo(208)
+            }}
             initial={{ scale: 0.8, opacity: 0 }}
             animate={{
                 scale: 1,
@@ -19,6 +23,8 @@ function SliderCard({ data }: Props) {
                 },
             }}
             exit={{ scale: 0.8, opacity: 0 }}
+            onHoverStart={() => {setHover(true)}}
+            onHoverEnd={() => {setHover(false)}}
             transition={{
                 type: "spring",
                 damping: 20,
@@ -29,9 +35,11 @@ function SliderCard({ data }: Props) {
               layoutId={data.img}
               alt="Transition Image"
               src={data.img}
-              className=" absolute h-full w-full  rounded-2xl  object-cover brightness-75 "
+              animate={{scale: hover ? 1.05 : 1}}
+              transition={{duration:0.3}}
+              className=" absolute h-full w-full  rounded  object-cover brightness-75 "
             />
-            <motion.div className=" absolute z-10 flex h-full items-end p-4">
+            <motion.div className=" absolute z-10 flex h-full items-end p-4 bg-gradient-to-t from-black to-transparent w-full">
                 <motion.div>
                     <motion.div
                         layout

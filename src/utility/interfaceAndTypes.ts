@@ -11,7 +11,8 @@ export interface CurrentSlideData {
     index: number;
 };
 
-export interface Icon {
+export interface IconData {
+    icon:string,
     color?:string,
     size?:string,
     className?:string,

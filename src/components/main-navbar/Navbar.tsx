@@ -3,7 +3,7 @@ import React from 'react'
 import { useRouter } from 'next/navigation'
 import { usePathname } from 'next/navigation'
 import Headroom from 'react-headroom'
-import { DarkIcon } from '@/assets/icons'
+import { Icon } from '..'
 
 const Navbar = () => {
     const router = useRouter()
@@ -22,7 +22,7 @@ const Navbar = () => {
                 </div>
                 <div className='flex flex-row'>
                     <button>
-                        <DarkIcon size='1.3rem'/>
+                        <Icon icon='icon-park-outline:dark-mode' size='1.3rem'/>
                     </button>
                 </div>
             </section>

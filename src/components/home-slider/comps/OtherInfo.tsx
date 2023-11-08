@@ -36,23 +36,17 @@ function OtherInfo({ data }: Props) {
 
 export default OtherInfo;
 
-const AnimatedText = ({
-  data,
-  className,
-}: {
-  data?: string;
-  className?: string;
-}) => {
-  return (
-    <span
-      style={{
-        overflow: "hidden",
-        display: "inline-block",
-      }}
-    >
-      <motion.p className={` ${className}`} variants={item} key={data}>
-        {data}
-      </motion.p>
-    </span>
-  );
+const AnimatedText = ({ data, className }: { data?: string; className?: string}) => {
+    return (
+      <span
+          style={{
+              overflow: "hidden",
+              display: "inline-block",
+          }}
+      >
+          <motion.p className={` ${className}`} variants={item} key={data}>
+              {data}
+          </motion.p>
+      </span>
+    );
 };
