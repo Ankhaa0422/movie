@@ -29,8 +29,8 @@ function HomeSlider ({sliderData, initData}:Props) {
             transitionData={transitionData}
             currentSlideData={currentSlideData}
             />
-            <div className='bg-black absolute w-full h-full z-10 bg-opacity-20'/>
-            <div className="  absolute z-20  h-full w-full">
+            <div className='bg-gradient-to-t from-black from-0% via-transparent via-40% to-transparent absolute w-full h-full z-10 bg-opacity-20'/>
+            <div className="absolute z-20  h-full w-full">
                 <div className=" flex h-full w-full flex-col md:flex-row">
                     <div className="col-span-4 mb-3 flex h-full flex-1 flex-col justify-end px-5 md:mb-0 md:justify-center md:px-10">
                         <SlideInfo
@@ -38,9 +38,8 @@ function HomeSlider ({sliderData, initData}:Props) {
                             currentSlideData={currentSlideData}
                         />
                     </div>
-                    <div className="col-span-6 flex h-full flex-1 flex-col justify-end p-4">
+                    <div className="col-span-3 flex h-full flex-1 flex-col justify-end p-4">
                         <Slides data={data} />
-
                         <Controls
                             currentSlideData={currentSlideData}
                             data={data}

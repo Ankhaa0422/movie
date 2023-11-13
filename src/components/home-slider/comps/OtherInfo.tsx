@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { Icon } from "@/components";
 
 type Props = {
   data: any;
@@ -23,13 +24,37 @@ function OtherInfo({ data }: Props) {
         data={data?.location}
       />
       <AnimatedText
-        className=" my-1 text-4xl font-semibold md:my-3 md:text-8xl md:leading-[100px]"
+        className=" my-1 text-2xl font-semibold md:my-3 md:text-5xl md:leading-[100px]"
         data={data?.title}
       />
       <AnimatedText
         className=" text-xs text-[#D5D5D6]"
         data={data?.description}
       />
+      <div
+          style={{
+              overflow: "hidden",
+              display: "inline-block",
+          }}
+          className="mt-5"
+      >
+        <motion.button variants={item} key={data}
+          whileHover={{
+            background: 'rgb(225 29 72)',
+            color: '#fff',
+            border: '1px solid transparent'
+          }}
+          style={{
+            background: 'transparent',
+            color: '#fff',
+            border: '1px solid white'
+          }}
+          className="w-fit rounded flex flex-row hover:bg-rose-600 px-6 py-1 font-medium items-center justify-center gap-2"
+        >
+          <Icon icon="mdi:youtube" size="1.4rem"/>
+            Trailer
+        </motion.button>
+      </div>
     </motion.div>
   );
 }

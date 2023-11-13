@@ -1,6 +1,7 @@
 import React from "react";
 import Progress from "./Progress";
 import { CurrentSlideData, Data } from '@/utility/interfaceAndTypes';
+import { Icon } from "@/components";
 
 type Props = {
     currentSlideData: CurrentSlideData;
@@ -13,7 +14,19 @@ type Props = {
     initData: Data;
 };
 
+let interval:any = undefined
+
 function Controls({sliderData, data, transitionData, currentSlideData, handleData, handleTransitionData, handleCurrentSlideData, initData}:Props) {
+
+    function sliderInterval () {
+        clearInterval(interval)
+        interval = setInterval(() => {
+            handleNext()
+        }, 4000)
+    }
+
+    sliderInterval()
+
     const handlePrev = () => {
         handleData((prevData) => [
             transitionData ? transitionData : initData,
@@ -26,6 +39,7 @@ function Controls({sliderData, data, transitionData, currentSlideData, handleDat
             ),
         });
         handleTransitionData(data[data.length - 1]);
+        sliderInterval()
     };
 
     const handleNext = () => {
@@ -41,15 +55,16 @@ function Controls({sliderData, data, transitionData, currentSlideData, handleDat
                 transitionData ? transitionData : initData,
             ]);
         }, 500);
+        sliderInterval()
     };
 
     return (
         <div className="flex items-center gap-3 px-0 py-3 md:px-1 md:py-5">
             <SliderButton handleClick={handlePrev}>
-                <span className=" text-xl" > {`<`} </span>
+                <span className=" text-xl" > <Icon icon="ep:arrow-left-bold" /> </span>
             </SliderButton>
             <SliderButton handleClick={handleNext}>
-                <span className=" text-xl" > {`>`} </span>
+                <span className=" text-xl" > <Icon icon="ep:arrow-right-bold" /> </span>
             </SliderButton>
             <Progress curIndex={currentSlideData.index} length={sliderData.length} />
         </div>

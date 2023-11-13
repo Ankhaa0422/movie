@@ -9,10 +9,10 @@ function SliderCard({ data }: Props) {
     const [hover, setHover] = React.useState(false)
     return (
         <motion.div
-            className=" relative rounded shadow-md w-[208px] min-w-[208px] max-w-[208px] cursor-pointer overflow-hidden"
+            className=" relative rounded shadow-md w-[150px] min-w-[150px] max-w-[150px] cursor-pointer overflow-hidden"
             layout
             style={{
-                height: defaultZurgiinKhemjeegeerHeightBodyo(208)
+                height: defaultZurgiinKhemjeegeerHeightBodyo(150)
             }}
             initial={{ scale: 0.8, opacity: 0 }}
             animate={{
@@ -43,14 +43,14 @@ function SliderCard({ data }: Props) {
                 <motion.div>
                     <motion.div
                         layout
-                        className=" mb-2 h-[2px] w-3 rounded-full bg-white"
+                        className=" mb-2 h-[2px] w-10 rounded-full bg-white"
                     ></motion.div>
                     <motion.p layoutId={data.location} className="text-xs text-[#D5D5D6]">
                         {data.location}
                     </motion.p>
                     <motion.h1
                         layoutId={data.title}
-                        className="text-xl leading-6 text-white"
+                        className="text-base leading-6 text-white"
                     >
                         {data.title}
                     </motion.h1>
