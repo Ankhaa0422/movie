@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { CurrentSlideData, Data } from '@/utility/interfaceAndTypes';
 
 type Props = {
-  transitionData: Data;
+  transitionData: any;
   currentSlideData: CurrentSlideData;
 };
 
@@ -25,8 +25,8 @@ function BackgroundImage({ transitionData, currentSlideData }: Props) {
       )}
       <motion.img
         alt="Current Image"
-        key={currentSlideData.data.img + "transition"}
-        src={currentSlideData.data.img}
+        key={currentSlideData.data?.img + "transition"}
+        src={currentSlideData.data?.img}
         className=" absolute left-0 top-0 h-full w-full object-cover brightness-50"
       />
     </>

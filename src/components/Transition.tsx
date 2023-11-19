@@ -5,6 +5,7 @@ interface Props {
     layout?: boolean;
     className?: string;
     direction?: 'left' | 'right' | 'up' | 'down' | 'none';
+    outDirection?: 'left' | 'right' | 'up' | 'down' | 'none';
     distance?: number;
     durationIn?: number;
     durationOut?: number;
@@ -16,7 +17,7 @@ const Transition = (props: Props) => {
         layout = false,
         className,
         direction = 'none',
-        distance = 50,
+        distance = 200,
         durationIn,
         durationOut,
     } = props;
@@ -28,7 +29,7 @@ const Transition = (props: Props) => {
         none: { x: 0, y: 0 },
     };
     const transitionIn = {
-        type: 'spring',
+        type: 'tweet',
         duration: durationIn,
     };
     const animationConfig = {

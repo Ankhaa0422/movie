@@ -5,13 +5,13 @@ import { Icon } from "@/components";
 
 type Props = {
     currentSlideData: CurrentSlideData;
-    sliderData: Data[];
-    data: Data[];
-    transitionData: Data;
-    handleData: React.Dispatch<React.SetStateAction<Data[]>>;
+    sliderData: any[];
+    data: any[];
+    transitionData: any;
+    handleData: React.Dispatch<React.SetStateAction<any[]>>;
     handleTransitionData: React.Dispatch<React.SetStateAction<Data>>;
     handleCurrentSlideData: React.Dispatch<React.SetStateAction<CurrentSlideData>>;
-    initData: Data;
+    initData: any;
 };
 
 let interval:any = undefined

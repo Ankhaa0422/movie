@@ -13,7 +13,7 @@ interface Props {
 }
 
 function HomeSlider ({sliderData, initData}:Props) {
-    const [data, setData] = React.useState<Data[]>(sliderData.slice(1));
+    const [data, setData] = React.useState<any[]>(sliderData.slice(1));
     const [transitionData, setTransitionData] = React.useState<Data>(
       sliderData[0]
     );
