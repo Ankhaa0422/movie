@@ -4,7 +4,7 @@ import { motion } from 'framer-motion'
 import { TeamCard, Transition, AnimatedParagraph } from '@/components'
 import zurag from '../../../../public/images/about.png'
 import profile from '../../../../public/images/profile.png'
-
+import TeamCardTwo from '@/components/TeamCardTwo'
 function Page() {
     const team = [
         {Name: 'Teammate 1', Position: 'CEO', Image: profile.src},
@@ -66,10 +66,19 @@ function Page() {
             
             <div className='mt-10 flex flex-col w-full mb-40 items-center gap-3'>
                 <h3 className='uppercase font-semibold text-3xl'>Our team</h3>
-                <div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 grid-flow-row gap-4 w-full px-4'>
+                {/* <div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 grid-flow-row gap-4 w-full px-4'>
                     {
                         team.map((x, i) => {
-                            return <TeamCard key={i} data={x}/>
+                            // return <TeamCard key={i} data={x}/>
+                            return <TeamCardTwo key={i} data={x}/>
+                        })
+                    }
+                </div> */}
+                <div className='flex justify-center flex-wrap max-w-[100em] mx-auto gap-[0.938rem] translate-y-[1em] relative z-10'>
+                    {
+                        team.map((x, i) => {
+                            // return <TeamCard key={i} data={x}/>
+                            return <TeamCardTwo key={i} data={x}/>
                         })
                     }
                 </div>

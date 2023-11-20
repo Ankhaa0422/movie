@@ -12,7 +12,7 @@ function AnimatedParagraph ({paragraph}:{paragraph:string}) {
         }
     }
 
-    return <motion.div variants={defaultAnimation} initial={'hidden'} animate={'visible'} transition={{staggerChildren:0.1}}>
+    return <motion.div variants={defaultAnimation} initial={'hidden'} animate={'visible'} transition={{staggerChildren:0.01}}>
         {
             paragraph.split("").map((char, i) => {
                 return <motion.span key={i} variants={defaultAnimation}>

@@ -1,3 +1,60 @@
 .svgWave {
     stroke: #2980b9
 }
+
+.card {
+    padding: 1.875em 1.25em;
+    max-width: 18.75rem;
+    width: 90%;
+    height: 16.875rem;
+    display: grid;
+    place-content: center;
+    place-items: center;
+    text-align: center;
+    position: relative;
+
+    &::before {
+        position: absolute;
+        content: "";
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 1rem;
+        z-index: -1;
+        border: 0.125rem solid transparent;
+        background: linear-gradient(45deg, #1e272e, #48627a) border-box;
+        -webkit-mask: linear-gradient(#fff 0 0) padding-box,
+            linear-gradient(#fff 0 0);
+        -webkit-mask-composite: destination-out;
+        mask-composite: exclude;
+    }
+
+    h2 {
+        color: #fff;
+        letter-spacing: 0.05rem;
+        font-size: clamp(1rem, 0.9375rem + 0.3125vw, 1.25rem);
+        margin-top: 0.625em;
+        margin-bottom: 0.188em;
+    }
+
+    p {
+        color: #afafaf;
+        font-size: clamp(0.8rem, 0.7625rem + 0.1875vw, 0.95rem);
+    }
+
+    &-top {
+        flex-basis: 100%;
+        display: flex;
+        justify-content: center;
+        gap: 0.938rem;
+        flex-wrap: wrap;
+
+        .card {
+            img {
+                width: clamp(120px, 40vw, 150px);
+                height: clamp(120px, 40vw, 150px);
+            }
+        }
+    }
+}

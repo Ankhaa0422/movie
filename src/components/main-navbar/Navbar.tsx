@@ -42,7 +42,7 @@ const Navbar = () => {
         {href: '/contact', en: 'Contact us', mn: 'Холбоо барих', hoverId: 'contact'},
     ]
 
-    return <Headroom upTolerance={1} className='!z-[999999] fixed left-0 top-0 w-full transition-all'>
+    return <Headroom upTolerance={1} className='!z-[10000] fixed left-0 top-0 w-full transition-all'>
         <nav id='navbar' className={`w-full h-[50px] bg-opacity-60 transition-all ${!['/', '/about'].some(x => x === zam) && 'bg-[#1c1a27] backdrop-blur'}`}>
             <section className='container w-full h-full mx-auto flex flex-row justify-between items-center px-4'>
                 <div className='logo w-fit h-fit cursor-pointer' onClick={navigateHome} >FilmBridge</div>

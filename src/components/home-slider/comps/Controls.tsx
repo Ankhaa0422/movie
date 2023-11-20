@@ -59,11 +59,11 @@ function Controls({sliderData, data, transitionData, currentSlideData, handleDat
     };
 
     return (
-        <div className="flex items-center gap-3 px-0 py-3 md:px-1 md:py-5">
-            <SliderButton handleClick={handlePrev}>
+        <div className="flex lg:min-w-[705px] lg:w-[705px] lg:max-w-[705px] items-center gap-3 px-0 py-3 md:px-1 md:py-5">
+            <SliderButton handleClick={handlePrev} isLeft={true}>
                 <span className=" text-xl" > <Icon icon="ep:arrow-left-bold" /> </span>
             </SliderButton>
-            <SliderButton handleClick={handleNext}>
+            <SliderButton handleClick={handleNext} isLeft={false}>
                 <span className=" text-xl" > <Icon icon="ep:arrow-right-bold" /> </span>
             </SliderButton>
             <Progress curIndex={currentSlideData.index} length={sliderData.length} />
@@ -73,10 +73,15 @@ function Controls({sliderData, data, transitionData, currentSlideData, handleDat
 
 export default Controls;
 
-const SliderButton = ({ children, handleClick}:{ children: React.ReactNode; handleClick: () => void }) => {
+const SliderButton = ({ children, handleClick, isLeft = false}:{ children: React.ReactNode; handleClick: () => void; isLeft: Boolean }) => {
     return (
         <button
-            className=" flex h-14 w-14 items-center justify-center rounded-full border-[1px] border-[#fdfdfd5f] transition duration-300 ease-in-out hover:bg-white hover:text-black"
+            data-cursor-size='80px'
+            data-cursor-text={isLeft ? 'Previous' : 'Next'}
+            data-cursor-textColor={'#000'}
+            data-cursor-color='#ffffffaa'
+            data-cursor-backdropBlur="4px"
+            className=" flex h-14 w-14 items-center justify-center rounded-full border-[1px] border-[#fdfdfd5f] transition duration-300 ease-in-out hover:bg-white hover:text-black cursor-none"
             onClick={handleClick}
         >
             {children}
