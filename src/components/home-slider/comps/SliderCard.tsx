@@ -52,14 +52,14 @@ function SliderCard({ data }: Props) {
               transition={{duration:0.3}}
               className=" absolute h-full w-full rounded object-cover brightness-75"
             />
-            <motion.img
+            {/* <motion.img
               layoutId={data.Poster}
               alt="Transition Image"
               src={data.Poster}
               animate={{scale: hover ? 1.05 : 1}}
               transition={{duration:0.3}}
               className=" absolute h-full w-full  rounded  object-cover brightness-75 "
-            />
+            /> */}
             <motion.div className=" absolute z-10 flex h-full items-end p-4 bg-gradient-to-t from-black to-transparent w-full">
                 <motion.div>
                     <motion.div

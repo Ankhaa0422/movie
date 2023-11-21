@@ -22,6 +22,7 @@ function redirectToLogin(request: NextRequest) {
         url.search = `redirect=${request.nextUrl.pathname}`;
         return NextResponse.redirect(url);
     }
+    return NextResponse.next()
 }
 
 export async function middleware(request: NextRequest) {

@@ -27,7 +27,7 @@ export default function Home() {
             mountRef.current = true
             dummyJagsaalt = []
             test(0)
-            test2(0)
+            // test2(0)
         }
     }, [])
     

@@ -37,22 +37,22 @@ export default function Page() {
     const tabs = [
         {
             ner: 'All',
-            khoch: 'All',
+            khoch: 'all',
             icon: 'ic:outline-movie-filter'
         },
         {
             ner: 'In Theater',
-            khoch: 'In Theater',
+            khoch: 'inTheater',
             icon: 'bx:camera-movie'
         },
         {
             ner: 'Upcoming',
-            khoch: 'Upcoming',
+            khoch: 'upcoming',
             icon: 'ic:outline-movie-filter'
         },
         {
             ner: 'On stream',
-            khoch: 'On stream',
+            khoch: 'onStream',
             icon: 'ic:outline-movie-filter'
         },
     ]
@@ -63,7 +63,7 @@ export default function Page() {
                     <div className='flex flex-row items-center w-full gap-2'>
                             {
                                 tabs.map((x, i) => {
-                                    return <Link key={i} href={x.ner === 'All'? "?" : `?status=${x.ner}`}>
+                                    return <Link key={i} href={x.ner === 'All'? "?" : `?status=${x.khoch}`}>
                                         <motion.div
                                             initial={false} 
                                             className='text-[1.5rem] relative cursor-pointer px-4 ease-out py-1 gap-2 flex flex-row items-center text-[#333333] hover:text-[#555555] dark:text-gray-100 dark:hover:text-gray-300 transition-all'

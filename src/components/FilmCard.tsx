@@ -67,6 +67,7 @@ function FilmCard ({data}:{data:any}) {
         <motion.img
             alt="Poster Image"
             src={data.Poster}
+            layoutId={`Poster-${data.imdbID}`}
             initial={{backdropFilter: 'blur(4px)'}}
             animate={{scale: hover ? 1.05 : 1}}
             transition={{duration:0.3}}
