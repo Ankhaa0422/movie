@@ -10,16 +10,16 @@ export default function RootLayout({
   return (
     <html lang="en">
       <title>QWERTY</title>
-      <body className={`bg-[#1c1a27] text-zinc-200 flex flex-row`}>
-        <AnimatePresence>
+      <body className={`bg-[#1c1a27] text-zinc-200 flex flex-row`}>  
           <AdminSideBar/>
           <div className='flex flex-col w-full h-screen overflow-auto'>
             <AdminHeader/>
             <div className='flex w-full h-fit mt-10 px-4'>
-              {children}
+              <AnimatePresence mode='wait'>
+                {children}
+              </AnimatePresence>
             </div>
           </div>
-        </AnimatePresence>
       </body>
     </html>
   )

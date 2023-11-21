@@ -2,10 +2,11 @@
 import React from 'react'
 import { motion } from "framer-motion"
 import { defaultZurgiinKhemjeegeerHeightBodyo } from '@/utility'
-
+import { useRouter } from 'next/navigation'
 function FilmCard ({data}:{data:any}) {
     const [hover, setHover] = React.useState(false)
     const cardRef = React.useRef<HTMLDivElement|null>(null)
+    const router = useRouter()
     const mount = React.useRef(false)
     const returnCardWidth = () => {
         const card = document.getElementById(data.imdbID)
@@ -52,6 +53,9 @@ function FilmCard ({data}:{data:any}) {
             type: "spring",
             duration: 0.3
         }}
+        onClick={() => {
+            router.push(`/film/${data.imdbID}`)
+        }}
     >
         <motion.img
             alt="Transition Image"
@@ -59,9 +63,9 @@ function FilmCard ({data}:{data:any}) {
             animate={{scale: hover ? 1.05 : 1}}
             transition={{duration:0.3}}
             className=" absolute h-full w-full rounded-sm object-cover brightness-75"
-            />
-            <motion.img
-            alt="Transition Image"
+        />
+        <motion.img
+            alt="Poster Image"
             src={data.Poster}
             initial={{backdropFilter: 'blur(4px)'}}
             animate={{scale: hover ? 1.05 : 1}}
@@ -74,7 +78,7 @@ function FilmCard ({data}:{data:any}) {
         <motion.div 
             className="absolute z-10 flex h-full items-end p-4 bg-gradient-to-t from-black to-transparent w-full" 
             initial={{backdropFilter: 'blur(10px)'}} 
-            animate={{backdropFilter: 'none'}} 
+            animate={{backdropFilter: 'blur(0px)'}} 
             exit={{backdropFilter: 'blur(10px)'}} 
             transition={{duration: 1}}
         >

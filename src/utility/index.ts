@@ -35,3 +35,8 @@ async function getFilmInfo(id:string, resolve:Function) {
 export function deepClone(data: object | Array<any>) {
     return JSON.parse(JSON.stringify(data))
 }
+
+export const eventDisabler = (e:any) => {
+    e.preventDefault();
+    e.stopPropagation()
+}

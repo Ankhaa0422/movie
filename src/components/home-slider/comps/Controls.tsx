@@ -78,9 +78,9 @@ const SliderButton = ({ children, handleClick, isLeft = false}:{ children: React
         <button
             data-cursor-size='80px'
             data-cursor-text={isLeft ? 'Previous' : 'Next'}
-            data-cursor-textColor={'#000'}
+            data-cursor-textcolor={'#000'}
             data-cursor-color='#ffffffaa'
-            data-cursor-backdropBlur="4px"
+            data-cursor-backdropblur="4px"
             className=" flex h-14 w-14 items-center justify-center rounded-full border-[1px] border-[#fdfdfd5f] transition duration-300 ease-in-out hover:bg-white hover:text-black cursor-none"
             onClick={handleClick}
         >

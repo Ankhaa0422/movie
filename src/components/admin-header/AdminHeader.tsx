@@ -1,4 +1,5 @@
 import { Icon } from ".."
+import { logout } from "@/server-actions"
 function AdminHeader() {
     return <div className={`sticky top-0 w-full h-[50px] min-h-[50px] bg-opacity-60 flex flex-row items-center px-10 transition-all bg-[#1c1a27] backdrop-blur justify-between`}>
         <div></div>
@@ -6,7 +7,7 @@ function AdminHeader() {
             <button className="transition-all p-1 hover:bg-[#2c2a34] rounded">
                 <Icon icon="solar:bell-broken" size="1.5rem"/>
             </button>
-            <button className="transition-all p-1 hover:bg-[#2c2a34] rounded">
+            <button className="transition-all p-1 hover:bg-[#2c2a34] rounded" onClick={logout}>
                 <Icon icon="solar:logout-broken" size="1.5rem"/>
             </button>
         </div>

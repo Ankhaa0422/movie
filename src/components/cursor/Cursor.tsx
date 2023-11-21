@@ -163,8 +163,8 @@ export const Cursor: FC<CursorProps> = ({
         const magneticElements = (document.querySelectorAll('[data-cursor-magnetic]') as unknown) as NodeListOf<HTMLElement>;
         const stickElements = (document.querySelectorAll('[data-cursor-stick]') as unknown) as NodeListOf<HTMLElement>;
         const exclusionElements = (document.querySelectorAll('[data-cursor-exclusion]') as unknown) as NodeListOf<HTMLElement>;
-        const blurElements = (document.querySelectorAll('[data-cursor-backdropBlur]') as unknown) as NodeListOf<HTMLElement>;
-        const textColorElements = (document.querySelectorAll('[data-cursor-textColor]') as unknown) as NodeListOf<HTMLElement>;
+        const blurElements = (document.querySelectorAll('[data-cursor-backdropblur]') as unknown) as NodeListOf<HTMLElement>;
+        const textColorElements = (document.querySelectorAll('[data-cursor-textcolor]') as unknown) as NodeListOf<HTMLElement>;
 
         let stickStatus = false;
 

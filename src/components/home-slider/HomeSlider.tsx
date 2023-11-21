@@ -4,7 +4,7 @@ import BackgroundImage from "./comps/BackgroundImage";
 import Slides from "./comps/Slides";
 import SlideInfo from "./comps/SlideInfo";
 import Controls from './comps/Controls'
-import { AnimatePresence } from 'framer-motion'
+import { AnimatePresence, motion } from 'framer-motion'
 import { CurrentSlideData, Data } from '@/utility/interfaceAndTypes';
 
 interface Props {
@@ -26,11 +26,12 @@ function HomeSlider ({sliderData, initData}:Props) {
     return <div className='max-h-screen min-h-screen h-screen relative'>
         <AnimatePresence>
             <BackgroundImage
-            transitionData={transitionData}
-            currentSlideData={currentSlideData}
+                key={'test'}
+                transitionData={transitionData}
+                currentSlideData={currentSlideData}
             />
-            <div className='bg-gradient-to-t from-black from-0% via-transparent via-40% to-transparent absolute w-full h-full z-10 bg-opacity-20'/>
-            <div className="absolute z-20  h-full w-full">
+            <motion.div key={'test2'} className='bg-gradient-to-t from-black from-0% via-transparent via-40% to-transparent absolute w-full h-full z-10 bg-opacity-20'/>
+            <motion.div key={'test3'} className="absolute z-20  h-full w-full">
                 <div className=" flex h-full w-full flex-col md:flex-row">
                     <div className="col-span-4 mb-3 flex h-full flex-1 flex-col justify-end px-5 md:mb-0 md:justify-center md:px-10">
                         <SlideInfo
@@ -52,7 +53,7 @@ function HomeSlider ({sliderData, initData}:Props) {
                         />
                     </div>
                 </div>
-            </div>
+            </motion.div>
         </AnimatePresence>
     </div>    
 }
