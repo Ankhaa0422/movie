@@ -1,7 +1,7 @@
 import { Icon } from ".."
 import { logout } from "@/server-actions"
 function AdminHeader() {
-    return <div className={`sticky top-0 w-full h-[50px] min-h-[50px] bg-opacity-60 flex flex-row items-center px-10 transition-all bg-[#1c1a27] backdrop-blur justify-between`}>
+    return <div className={`sticky top-0 w-full h-[50px] min-h-[50px] z-[9999] bg-opacity-60 flex flex-row items-center px-10 transition-all bg-[#1c1a27] backdrop-blur justify-between`}>
         <div></div>
         <div className="flex items-center flex-row gap-2">
             <button className="transition-all p-1 hover:bg-[#2c2a34] rounded">

@@ -13,13 +13,6 @@ function Page() {
         {Name: 'Teammate 1', Position: 'CEO', Image: profile.src},
         {Name: 'Teammate 1', Position: 'CEO', Image: profile.src},
         {Name: 'Teammate 1', Position: 'CEO', Image: profile.src},
-        {Name: 'Teammate 1', Position: 'CEO', Image: profile.src},
-        {Name: 'Teammate 1', Position: 'CEO', Image: profile.src},
-        {Name: 'Teammate 1', Position: 'CEO', Image: profile.src},
-        {Name: 'Teammate 1', Position: 'CEO', Image: profile.src},
-        {Name: 'Teammate 1', Position: 'CEO', Image: profile.src},
-        {Name: 'Teammate 1', Position: 'CEO', Image: profile.src},
-        {Name: 'Teammate 1', Position: 'CEO', Image: profile.src},
     ]
     return <Transition direction='left'>
         <div className='h-[500px] w-screen relative flex justify-center items-center flex-col' style={{backgroundImage: `url(${zurag.src})`, backgroundPosition: 'fixed !important', backgroundSize: 'cover'}}>
@@ -41,27 +34,31 @@ function Page() {
             </div>
 
             <div className='text-justify px-4'>
-                In libero est, ultricies sed varius non, eleifend eu tellus. Sed tempor ipsum lectus, et porta sapien facilisis sed. Nam condimentum sem convallis enim accumsan, ut semper sem 
-                ultricies. Donec elementum tristique eleifend. Etiam a ante congue, rutrum risus et, tincidunt orci. Aenean eros felis, viverra eu lectus ut, consequat dapibus eros. Aliquam eu 
-                purus facilisis, efficitur quam vel, pellentesque nunc. Donec eu tortor vehicula, placerat justo et, aliquam nisl. Nullam id vehicula risus. Nullam luctus convallis dictum. 
-                Phasellus pharetra nunc malesuada nisi feugiat, id ultricies est viverra.
+                <AnimatedParagraph paragraph='Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vitae purus erat. Sed molestie, leo et posuere pellentesque, quam odio sagittis metus, sit amet imperdiet mauris enim ut dui. 
+                    Integer scelerisque, lacus sit amet tincidunt efficitur, urna magna ornare augue, ac posuere quam diam dictum lacus. Nullam tincidunt cursus pellentesque. Fusce ut leo sagittis erat posuere 
+                    eleifend. Morbi maximus sapien nulla, commodo aliquam nulla pellentesque a. Proin in odio neque. Morbi consectetur ligula eu aliquam faucibus. Morbi at dolor sollicitudin, imperdiet arcu quis, 
+                    aliquam diam.'/>
             </div>
 
             <div className='text-justify px-4'>
-                Nulla ac ex odio. Nam vehicula aliquet leo vel porta. Mauris a augue quis mi lacinia placerat. Duis ultrices convallis dui, vitae feugiat urna porta sit amet. 
-                Phasellus accumsan euismod lorem eget volutpat. Cras pulvinar ipsum a ante accumsan, vitae vehicula lorem fermentum. Pellentesque porttitor mi sit amet magna volutpat tincidunt. 
-                Nulla facilisi. Ut eget elit aliquet, gravida nisl vitae, aliquet mi.
+                <AnimatedParagraph paragraph='Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vitae purus erat. Sed molestie, leo et posuere pellentesque, quam odio sagittis metus, sit amet imperdiet mauris enim ut dui. 
+                    Integer scelerisque, lacus sit amet tincidunt efficitur, urna magna ornare augue, ac posuere quam diam dictum lacus. Nullam tincidunt cursus pellentesque. Fusce ut leo sagittis erat posuere 
+                    eleifend. Morbi maximus sapien nulla, commodo aliquam nulla pellentesque a. Proin in odio neque. Morbi consectetur ligula eu aliquam faucibus. Morbi at dolor sollicitudin, imperdiet arcu quis, 
+                    aliquam diam.'/>
             </div>
 
             <div className='text-justify px-4'>
-                Sed non leo risus. Donec non dolor eu erat placerat egestas. Fusce sodales turpis ut nibh imperdiet, a fermentum quam consequat. Nullam convallis laoreet placerat. 
-                Etiam tincidunt in nisi sit amet maximus. Aliquam et massa non nibh tempus volutpat. Vestibulum eu facilisis velit. Suspendisse pharetra elementum ex, ut fringilla sem 
-                vestibulum ac. Sed fringilla nisi dapibus eros molestie, id tincidunt justo sagittis. Donec consectetur vitae ante feugiat euismod. Sed et luctus arcu.
+                <AnimatedParagraph paragraph='Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vitae purus erat. Sed molestie, leo et posuere pellentesque, quam odio sagittis metus, sit amet imperdiet mauris enim ut dui. 
+                    Integer scelerisque, lacus sit amet tincidunt efficitur, urna magna ornare augue, ac posuere quam diam dictum lacus. Nullam tincidunt cursus pellentesque. Fusce ut leo sagittis erat posuere 
+                    eleifend. Morbi maximus sapien nulla, commodo aliquam nulla pellentesque a. Proin in odio neque. Morbi consectetur ligula eu aliquam faucibus. Morbi at dolor sollicitudin, imperdiet arcu quis, 
+                    aliquam diam.'/>
             </div>
 
             <div className='text-justify px-4'>
-                Vivamus eu ullamcorper lorem. Nunc at pulvinar velit, sit amet accumsan nibh. Donec sodales arcu sit amet consectetur hendrerit. Fusce varius nibh quis velit volutpat condimentum. 
-                In hac habitasse platea dictumst. Sed porttitor luctus nibh sed ultrices. Nam dapibus libero a nisl dictum accumsan faucibus vitae risus.
+                <AnimatedParagraph paragraph='Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vitae purus erat. Sed molestie, leo et posuere pellentesque, quam odio sagittis metus, sit amet imperdiet mauris enim ut dui. 
+                    Integer scelerisque, lacus sit amet tincidunt efficitur, urna magna ornare augue, ac posuere quam diam dictum lacus. Nullam tincidunt cursus pellentesque. Fusce ut leo sagittis erat posuere 
+                    eleifend. Morbi maximus sapien nulla, commodo aliquam nulla pellentesque a. Proin in odio neque. Morbi consectetur ligula eu aliquam faucibus. Morbi at dolor sollicitudin, imperdiet arcu quis, 
+                    aliquam diam.'/>
             </div>
             
             <div className='mt-10 flex flex-col w-full mb-40 items-center gap-3'>

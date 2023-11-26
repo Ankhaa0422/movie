@@ -2,6 +2,7 @@ import React from "react";
 import Progress from "./Progress";
 import { CurrentSlideData, Data } from '@/utility/interfaceAndTypes';
 import { Icon } from "@/components";
+import { cycleArray } from "@/utility";
 
 type Props = {
     currentSlideData: CurrentSlideData;
@@ -21,11 +22,12 @@ function Controls({sliderData, data, transitionData, currentSlideData, handleDat
     function sliderInterval () {
         clearInterval(interval)
         interval = setInterval(() => {
-            handleNext()
+            // handleNext()
+            handleData(cycleArray(data))
         }, 4000)
     }
 
-    sliderInterval()
+    // sliderInterval()
 
     const handlePrev = () => {
         handleData((prevData) => [
@@ -39,7 +41,7 @@ function Controls({sliderData, data, transitionData, currentSlideData, handleDat
             ),
         });
         handleTransitionData(data[data.length - 1]);
-        sliderInterval()
+        // sliderInterval()
     };
 
     const handleNext = () => {
@@ -55,7 +57,7 @@ function Controls({sliderData, data, transitionData, currentSlideData, handleDat
                 transitionData ? transitionData : initData,
             ]);
         }, 500);
-        sliderInterval()
+        // sliderInterval()
     };
 
     return (

@@ -5,78 +5,59 @@ import zurag1 from '../../../public/images/zurag1.jpg'
 import zurag2 from '../../../public/images/zurag2.png'
 import zurag3 from '../../../public/images/zurag3.jpg'
 import zurag4 from '../../../public/images/zurag4.jpg'
-import { Divider, FilmCard, HomeSlider, Icon, Transition, Cursor } from '@/components'
-import { deepClone, omdbApiCall } from '@/utility'
+import { Divider, FilmCard, HomeSlider, Icon, Transition, Cursor, showLoader } from '@/components'
+import { deepClone, isNullOrUndefined, omdbApiCall } from '@/utility'
 import { motion } from 'framer-motion'
 import { renderToString } from 'react-dom/server'
+import { getHomeList } from '@/server-actions'
 let dummyJagsaalt:any[] = []
 export default function Home() {
-    const [state, setState] = React.useState<any[]>([])
-    const [bigState, setBigState] = React.useState<any>({
-        inTheatre: [],
-        onStream: [],
-        upComing: []
+
+    const [sliderData, setSliderData] = React.useState<any[]>([])
+    const [listData, setListData] = React.useState<any>({
+        upcomingList: [],
+        onStreamList: [],
+        inTheaterList: []
     })
-    const mountRef = React.useRef(false)
-    const qweqwe = ['tt13876842', 'tt15529074', 'tt1799631', 'tt0388629']
-    const qwerty = ['tt13876842', 'tt15529074', 'tt1799631', 'tt0388629', 'tt13293588', 'tt21209876', 'tt2098220', 'tt9054364']
-    const images = [zurag1.src, zurag2.src, zurag3.src, zurag4.src]
 
     React.useEffect(() => {
-        if(!mountRef.current) {
-            mountRef.current = true
-            dummyJagsaalt = []
-            test(0)
-            // test2(0)
+        showLoader(true)
+        async function getData() {
+            const result = await getHomeList()
+            if(!isNullOrUndefined(result)) {
+                listData.upcomingList = result.upcomingData
+                listData.onStreamList = result.onStreamData
+                listData.inTheaterList = result.inTheaterData
+                setSliderData(result.sliderData)
+                setListData({...listData})
+            }
         }
+        getData().finally(() => {
+            showLoader(false)
+        })
     }, [])
-    
-    function test (index:number) {
-        if(index < qweqwe.length) {
-            omdbApiCall(qweqwe[index]).then((result:any) => {
-                const cloneResult = deepClone(result)
-                cloneResult['img'] = images[index]
-                dummyJagsaalt.push(cloneResult)
-            }).finally(() => {
-              test(index + 1)
-            })
-        } else {
-          setState(dummyJagsaalt)
-        }
-    }
 
-    function test2 (index:number) {
-        if(index < qwerty.length) {
-            omdbApiCall(qwerty[index]).then((result:any) => {
-                const cloneResult = deepClone(result)
-                bigState.inTheatre.push(cloneResult)
-                bigState.onStream.push(cloneResult)
-                bigState.upComing.push(cloneResult)
-            }).finally(() => {
-                test2(index + 1)
-            })
-        } else {
-          setBigState({...bigState})
-        }
-    }
-    
+    console.log(listData, sliderData)
+
     return (
-        <Transition direction='left' outDirection='left'>
+        // <Transition layout direction='left' outDirection='left'>
+        <>
             <Cursor isGelly/>
             <main className={`relative h-fit select-none overflow-hidden text-white antialiased`}>
                 <div className='max-h-screen min-h-screen h-screen relative'>
                     {
-                        state.length > 0 && <HomeSlider sliderData={state} initData={state[0]} />
+                        sliderData.length > 0 && <HomeSlider sliderData={sliderData} initData={sliderData[0]} />
                     }
                     
                 </div>
                 <div className='container mx-auto mt-10 mb-10 flex flex-col'>
-                    <TestHome text='In Theater' datas={bigState.inTheatre}/>
-                    <TestHome text='On Stream' datas={bigState.onStream}/>
-                    <TestHome text='Upcoming' datas={bigState.upComing}/>
+                    <TestHome text='In Theater' datas={listData.inTheaterList}/>
+                    <TestHome text='On Stream' datas={listData.onStreamList}/>
+                    <TestHome text='Upcoming' datas={listData.upcomingList}/>
                 </div>
             </main>
-        </Transition>
+        </>
+            // {/* </Transition> */}
         
     );
 }

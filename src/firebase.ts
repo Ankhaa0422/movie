@@ -1,6 +1,8 @@
 
 import { initializeApp } from "firebase/app";
 import { getAuth } from 'firebase/auth'
+import { getFirestore } from "firebase/firestore";
+import { getStorage } from "firebase/storage";
 const firebaseConfig = {
     apiKey: "AIzaSyCzeANhgGkOQ15VZIRqlwZSVLxe0bRaLAE",
     authDomain: "filmbridge-b8d81.firebaseapp.com",
@@ -13,5 +15,6 @@ const firebaseConfig = {
   
 const filmbridgeApp = initializeApp(firebaseConfig);
 const auth = getAuth()
-
-export { auth, filmbridgeApp }
+const db = getFirestore(filmbridgeApp)
+const storage = getStorage(filmbridgeApp)
+export { auth, filmbridgeApp, db, storage }

@@ -11,7 +11,7 @@ function AdminSideBar() {
     ]
 
     return <div className="w-[300px] min-w-[300px] h-screen bg-[#212430] flex flex-col">
-        <div className="h-[50px] min-h-[50px] px-2 flex items-center justify-center">
+        <div className="h-[50px] min-h-[50px] px-2 flex items-center justify-center cursor-pointer" onClick={() => {router.push('/')}}>
             <h2 className="uppercase text-xl font-bold">FILMBRIDGE</h2>
         </div>
 

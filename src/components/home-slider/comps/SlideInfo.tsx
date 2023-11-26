@@ -6,6 +6,7 @@ import { CurrentSlideData, Data } from '@/utility/interfaceAndTypes';
 type Props = {
   transitionData: Data;
   currentSlideData: CurrentSlideData;
+  dataList: any[]
 };
 const item = {
     hidden: {
@@ -18,11 +19,11 @@ const item = {
     },
 };
 
-function SlideInfo({ transitionData, currentSlideData }: Props) {
+function SlideInfo({ transitionData, currentSlideData, dataList }: Props) {
     return (
         <>
             <motion.span layout className=" mb-2 h-1 w-5 rounded bg-white" />
-            <OtherInfo data={transitionData ? transitionData : currentSlideData.data}/>
+            <OtherInfo data={dataList[0]}/>
             {/* <motion.div layout className=" mt-5 flex items-center gap-3">
                 
             </motion.div> */}

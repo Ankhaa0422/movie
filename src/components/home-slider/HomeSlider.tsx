@@ -6,14 +6,13 @@ import SlideInfo from "./comps/SlideInfo";
 import Controls from './comps/Controls'
 import { AnimatePresence, motion } from 'framer-motion'
 import { CurrentSlideData, Data } from '@/utility/interfaceAndTypes';
-
 interface Props {
     sliderData:any[],
     initData:any
 }
 
 function HomeSlider ({sliderData, initData}:Props) {
-    const [data, setData] = React.useState<any[]>(sliderData.slice(1));
+    const [data, setData] = React.useState<any[]>(sliderData);
     const [transitionData, setTransitionData] = React.useState<Data>(
       sliderData[0]
     );
@@ -29,16 +28,18 @@ function HomeSlider ({sliderData, initData}:Props) {
         <AnimatePresence>
             <BackgroundImage
                 key={'test'}
+                dataList={data}
                 transitionData={transitionData}
                 currentSlideData={currentSlideData}
             />
-            <motion.div key={'test2'} className='bg-gradient-to-t from-black from-0% via-transparent via-40% to-transparent absolute w-full h-full z-10 bg-opacity-20'/>
+            <motion.div key={'test2'} className='bg-gradient-to-t from-[#1c1a27] from-0% via-transparent via-40% to-transparent absolute w-full h-full z-10 bg-opacity-20'/>
             <motion.div key={'test3'} className="absolute z-20  h-full w-full">
                 <div className=" flex h-full w-full flex-col md:flex-row">
                     <div className="col-span-4 mb-3 flex h-full flex-1 flex-col justify-end px-5 md:mb-0 md:justify-center md:px-10">
                         <SlideInfo
                             transitionData={transitionData}
                             currentSlideData={currentSlideData}
+                            dataList={data}
                         />
                     </div>
                     <div className="col-span-3 flex h-full flex-1 flex-col justify-end p-4">

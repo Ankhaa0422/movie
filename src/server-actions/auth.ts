@@ -24,7 +24,6 @@ export async function login(email:string = '', password:string = '') {
 
 export async function logout() {
     await signOut(auth);
-    // Removes authenticated cookies
     await fetch("/api/logout", {
       method: "GET",
     });

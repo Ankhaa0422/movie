@@ -111,7 +111,7 @@ export const Cursor: FC<CursorProps> = ({
         cursorSize = 48,
         cursorBackgrounColor = '#00000000',
         exclusionBackgroundColor = '#fff',
-        border = '1px solid #fff',
+        border = '2px solid #fff',
         cursorInnerColor = '#fff',
         style, className, dragHorinzontal = false, dragVertical = false
     }) => {

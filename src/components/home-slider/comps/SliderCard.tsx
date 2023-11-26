@@ -1,5 +1,5 @@
 import React from "react";
-import { motion } from "framer-motion";
+import { motion, useCycle } from "framer-motion";
 import { defaultZurgiinKhemjeegeerHeightBodyo } from "@/utility";
 import { useViewportSize } from "@mantine/hooks";
 
@@ -10,23 +10,38 @@ type Props = {
 function SliderCard({ data }: Props) {
     const [hover, setHover] = React.useState(false)
     const { height, width } = useViewportSize();
-    const returnWidth = () => {
-        if(1024 > width && width >= 768 ) {
-            return 180
-        } else if (width >= 1024) {
-            return 208
-        } else {
-            return 150
+    const cardRef = React.useRef<HTMLDivElement|null>(null)
+    const mount = React.useRef(false)
+    React.useEffect(() => {
+        const controller = new AbortController()
+        if(!mount.current) {
+            mount.current = true
+            onResize()
+        }
+        return () => {
+            controller.abort()
+        }
+    })
+
+    React.useEffect(() => {
+        window.addEventListener('resize', onResize)
+        return () => {
+            window.removeEventListener('resize', onResize)
+        }
+    }, [])
+
+    const onResize = () => {
+        if(cardRef.current) {
+            cardRef.current.style.height = `${defaultZurgiinKhemjeegeerHeightBodyo(cardRef.current.clientWidth)}px`
         }
     }
 
     return (
         <motion.div
+            ref={cardRef}
             className=" relative rounded shadow-md w-[150px] md:w-[180px] min-w-[150px] lg:w-[208px] cursor-pointer overflow-hidden"
             layout
-            style={{
-                height: defaultZurgiinKhemjeegeerHeightBodyo(returnWidth())
-            }}
+            id={data.imdbID}
             initial={{ scale: 0.8, opacity: 0 }}
             animate={{
                 scale: 1,
@@ -36,8 +51,6 @@ function SliderCard({ data }: Props) {
                 },
             }}
             exit={{ scale: 0.8, opacity: 0 }}
-            onHoverStart={() => {setHover(true)}}
-            onHoverEnd={() => {setHover(false)}}
             transition={{
                 type: "spring",
                 damping: 20,
@@ -45,21 +58,20 @@ function SliderCard({ data }: Props) {
             }}
         >
             <motion.img
-              layoutId={data.img}
-              alt="Transition Image"
-              src={data.img}
-              animate={{scale: hover ? 1.05 : 1}}
-              transition={{duration:0.3}}
-              className=" absolute h-full w-full rounded object-cover brightness-75"
+                id={data.Images[0]}
+                layoutId={data.Images[0]}
+                alt="Transition Image"
+                src={data.Images[0]}
+                className=" absolute h-full w-full rounded object-cover brightness-75 invisible"
             />
-            {/* <motion.img
-              layoutId={data.Poster}
-              alt="Transition Image"
-              src={data.Poster}
-              animate={{scale: hover ? 1.05 : 1}}
-              transition={{duration:0.3}}
-              className=" absolute h-full w-full  rounded  object-cover brightness-75 "
-            /> */}
+            <motion.img
+                layoutId={data.Poster}
+                alt="Transition Image"
+                src={data.Poster}
+                animate={{scale: hover ? 1.05 : 1}}
+                transition={{duration:0.3}}
+                className=" absolute h-full w-full  rounded  object-cover brightness-75 "
+            />
             <motion.div className=" absolute z-10 flex h-full items-end p-4 bg-gradient-to-t from-black to-transparent w-full">
                 <motion.div>
                     <motion.div

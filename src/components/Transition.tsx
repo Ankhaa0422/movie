@@ -1,5 +1,7 @@
-import { motion } from 'framer-motion';
 
+import { AnimatePresence, motion } from 'framer-motion';
+import { useRouter } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 interface Props {
     children: React.ReactNode;
     layout?: boolean;
@@ -12,6 +14,7 @@ interface Props {
 }
 
 const Transition = (props: Props) => {
+    const router = usePathname()
     const {
         children,
         layout = false,
@@ -56,16 +59,18 @@ const Transition = (props: Props) => {
     };
 
     return (
-        <motion.div
-            layout={layout}
-            className={className}
-            variants={animationConfig}
-            initial="in"
-            animate="animate"
-            exit="out"
-        >
-            {children}
-        </motion.div >
+            <motion.div
+                layout={layout}
+                key={router}
+                className={className}
+                variants={animationConfig}
+                initial="in"
+                animate="animate"
+                exit="out"
+                transition={{ duration: 0.6, ease: "easeInOut" }}
+            >
+                {children}
+            </motion.div >
     );
 }
 

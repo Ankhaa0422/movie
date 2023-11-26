@@ -4,23 +4,19 @@ function AnimatedParagraph ({paragraph}:{paragraph:string}) {
     const defaultAnimation = {
         hidden: {
             opacity: 0,
-            scale: 0
+            y:200
         },
         visible: {
             opacity: 1,
-            scale: 1
+            y:0
         }
     }
 
-    return <motion.div variants={defaultAnimation} initial={'hidden'} animate={'visible'} transition={{staggerChildren:0.01}}>
-        {
-            paragraph.split("").map((char, i) => {
-                return <motion.span key={i} variants={defaultAnimation}>
-                    {char}
-                </motion.span>
-            })
-        }
-    </motion.div>
+    return <div className="w-full h-fit overflow-hidden relative">
+        <motion.div variants={defaultAnimation} className="h-fit overflow-hidden" initial={'hidden'} animate={'visible'} transition={{type:'tween'}}>
+            {paragraph }
+        </motion.div>
+    </div>
 }
 
 export default AnimatedParagraph

@@ -4,19 +4,11 @@ import { motion } from "framer-motion"
 import { defaultZurgiinKhemjeegeerHeightBodyo } from '@/utility'
 import { useRouter } from 'next/navigation'
 function FilmCard ({data}:{data:any}) {
+
     const [hover, setHover] = React.useState(false)
     const cardRef = React.useRef<HTMLDivElement|null>(null)
     const router = useRouter()
     const mount = React.useRef(false)
-    const returnCardWidth = () => {
-        const card = document.getElementById(data.imdbID)
-        if(card) {
-            return card.clientWidth
-        } else {
-            return 200
-        }
-    }
-
     React.useEffect(() => {
         const controller = new AbortController()
         if(!mount.current) {
@@ -51,10 +43,10 @@ function FilmCard ({data}:{data:any}) {
         onHoverEnd={() => {setHover(false)}}
         transition={{
             type: "spring",
-            duration: 0.3
+            duration: 0.2
         }}
         onClick={() => {
-            router.push(`/film/${data.imdbID}`)
+            router.push(`/film/${data.id}`)
         }}
     >
         <motion.img
@@ -67,7 +59,7 @@ function FilmCard ({data}:{data:any}) {
         <motion.img
             alt="Poster Image"
             src={data.Poster}
-            layoutId={`Poster-${data.imdbID}`}
+            layoutId={`${data?.id}-Poster`}
             initial={{backdropFilter: 'blur(4px)'}}
             animate={{scale: hover ? 1.05 : 1}}
             transition={{duration:0.3}}

@@ -3,7 +3,7 @@ import React from 'react'
 import Link from "next/link"
 import { motion } from 'framer-motion'
 function NavItem({itemData, hover, setHover, zam}:{itemData:any, hover:string|null, setHover:Function, zam:string}) {
-    return <Link href={itemData.href}>
+    return <Link href={itemData.href} data-cursor-size='60px'>
         <li 
             className="group relative cursor-pointer h-full items-center justify-center flex hover:text-neutral-200 transition-all px-6" 
             onMouseEnter={() => {setHover(itemData.hoverId)}} 
