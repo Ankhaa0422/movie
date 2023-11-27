@@ -1,11 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 'use client'
 import React from 'react'
-import zurag1 from '../../../public/images/zurag1.jpg'
-import zurag2 from '../../../public/images/zurag2.png'
-import zurag3 from '../../../public/images/zurag3.jpg'
-import zurag4 from '../../../public/images/zurag4.jpg'
-import { Divider, FilmCard, HomeSlider, Icon, Transition, Cursor, showLoader } from '@/components'
+import { Divider, FilmCard, HomeSlider, Icon, Transition, Cursor, showLoader, TestSlider } from '@/components'
 import { deepClone, isNullOrUndefined, omdbApiCall } from '@/utility'
 import { motion } from 'framer-motion'
 import { renderToString } from 'react-dom/server'
@@ -45,8 +41,11 @@ export default function Home() {
             <Cursor isGelly/>
             <main className={`relative h-fit select-none overflow-hidden text-white antialiased`}>
                 <div className='max-h-screen min-h-screen h-screen relative'>
-                    {
+                    {/* {
                         sliderData.length > 0 && <HomeSlider sliderData={sliderData} initData={sliderData[0]} />
+                    } */}
+                    {
+                        sliderData.length > 0 && <TestSlider data={sliderData} />
                     }
                     
                 </div>
