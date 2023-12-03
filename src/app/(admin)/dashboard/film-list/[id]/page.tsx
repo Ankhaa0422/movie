@@ -15,8 +15,7 @@ import { addFilm, uploadPoster, getFilmInfo, updateFilm } from '@/server-actions
 
 let timeout:NodeJS.Timeout|undefined
 
-export default function Page (props:any) {
-    const { params } = props
+export default function Page ({ params }: {params: {id:any}}) {
     const router = useRouter()
     const focusTrapRef = useFocusTrap();
     const ReactQuill = React.useMemo(() => dynamic(() => import('react-quill'), { ssr: false }),[]);

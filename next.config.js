@@ -14,11 +14,12 @@ const nextConfig = {
                 hostname: "firebasestorage.googleapis.com", 
             },
         ],
+        unoptimized: true,
     },
     // experimental: {
     //     appDir: true,
     // },
-    output: 'export'
+    // output: 'export'
 }
 
 module.exports = nextConfig

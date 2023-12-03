@@ -14,7 +14,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <title>QWERTY</title>
+      <title>Filmbridge</title>
       <body className={`bg-[#1c1a27] text-zinc-200 flex flex-row ${calistoga.className}`}>  
           <AdminSideBar/>
           <div className='flex flex-col w-full h-screen overflow-auto'>

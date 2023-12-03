@@ -9,7 +9,7 @@ import Image from 'next/image'
 import { useLocalStorage } from '@mantine/hooks'
 
 var interval:NodeJS.Timeout|undefined
-function Page({ params }: {params: {id:any}}) {
+function InfoPage({ params }: {params: {id:any}}) {
     const [filmData, setFilmData] = React.useState<any>(undefined)
     const [activeImage, setActiveImage] = React.useState<any>(undefined)
     const [language, setLanguage] = useLocalStorage({'key': 'language', defaultValue: 'en'})
@@ -133,4 +133,4 @@ function Page({ params }: {params: {id:any}}) {
     )
 }
 
-export default Page
+export default InfoPage

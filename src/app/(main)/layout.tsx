@@ -4,7 +4,7 @@ import '@/assets/global.scss'
 import { Navbar, Transition, Footer } from '@/components'
 import { AnimatePresence } from 'framer-motion'
 import '@/assets/cursor.scss'
-import { Calistoga, Nunito, Metrophobic } from "next/font/google";
+import { Metrophobic } from "next/font/google";
 const calistoga = Metrophobic({weight:'400', subsets: ['latin']}) 
 
 export default function RootLayout({
