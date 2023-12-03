@@ -69,9 +69,8 @@ function TestHome ({text, href, hrefText, datas}:{text:string, href?:string, hre
         <Divider text={text} href={href} hrefText={hrefText}/>
         <div className='flex flex-row gap-2 w-full relative'>
             <motion.div ref={testRef} className='relative w-full overflow-hidden flex flex-row scroll-smooth'>
-                <div className='absolute h-full left-0 w-[50px] min-w-[50px] z-[9999] flex items-center justify-center bg-gradient-to-r from-[#1c1a27] to-transparent cursor-pointer'>
-                    {/* <Icon icon='uiw:left' size='3rem'/> */}
-                </div>
+                {/* <div className='absolute h-full left-0 w-[50px] min-w-[50px] z-[9999] flex items-center justify-center bg-gradient-to-r from-[#1c1a27] to-transparent cursor-pointer'>
+                </div> */}
                 <motion.div 
                     data-cursor-size='100px'
                     data-cursor-text={`<div class='flex flex-row gap-2'>
@@ -94,9 +93,8 @@ function TestHome ({text, href, hrefText, datas}:{text:string, href?:string, hre
                         })
                     }
                 </motion.div>
-                <div className='absolute h-full right-0 w-[50px] min-w-[50px] z-[9999] flex items-center justify-center bg-gradient-to-l from-[#1c1a27] to-transparent cursor-pointer'>
-                    {/* <Icon icon='uiw:right' size='3rem'/> */}
-                </div>
+                {/* <div className='absolute h-full right-0 w-[50px] min-w-[50px] z-[9999] flex items-center justify-center bg-gradient-to-l from-[#1c1a27] to-transparent cursor-pointer'>
+                </div> */}
             </motion.div>
         </div>
     </div>

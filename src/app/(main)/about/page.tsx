@@ -70,7 +70,7 @@ function Page() {
     return <Transition direction='left'>
         <Cursor isGelly/>
         <div className='h-[500px] w-screen relative flex justify-center items-center flex-col' style={{backgroundImage: `url(${zurag.src})`, backgroundPosition: 'fixed !important', backgroundSize: 'cover'}}>
-            <div className='absolute z-[5] w-full h-full left-0 top-0 bg-black bg-opacity-70 backdrop-blur-sm'/>
+            <div className='absolute z-[5] w-full h-full left-0 top-0 bg-gradient-to-t from-[#1c1a27] to-transparent backdrop-blur-sm'/>
             <div className='z-[10] flex flex-col justify-center items-center gap-2'>
                 <motion.h2 initial={{opacity: 0, scale: 0.3}} animate={{opacity: 1, scale: 1}} transition={{duration: 0.5}} className='text-5xl font-bold'>
                     <Image src={logo.src} width={200} height={200} alt=""/>

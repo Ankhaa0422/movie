@@ -5,7 +5,7 @@ import gsap from 'gsap'
 import { deepClone, defaultZurgiinKhemjeegeerHeightBodyo, isNullOrUndefined } from '@/utility'
 import { useLocalStorage } from '@mantine/hooks'
 import { usePathname } from 'next/navigation'
-
+let interval:NodeJS.Timeout|undefined = undefined
 export default function TestSlider({data}:{data:any}) {
     let order:any[] = Array.from(Array(data.length).keys())
     const path = usePathname()
@@ -149,11 +149,14 @@ export default function TestSlider({data}:{data:any}) {
     }
     
     async function changeActiveData () {
-        if(window.location.pathname !== '/') return
+        if(window.location.pathname !== '/') clearInterval(interval)
         else {
+            if(interval) clearInterval(interval)
             await step()
             await animate('#indicator', 4, {x: 0})
-            changeActiveData()
+            interval = setInterval(() => {
+                changeActiveData()
+            }, 4000)
             // sliderInterval()
         }
     }
@@ -170,7 +173,7 @@ export default function TestSlider({data}:{data:any}) {
 
     return (
         <div className="w-screen h-screen overflow-hidden relative flex" >
-            <div className='absolute w-full h-full bg-gradient-to-t from-[#1c1a27] to-transparent z-[35]' onClick={changeActiveData}></div>
+            <div className='absolute w-full h-full bg-gradient-to-t from-[#1c1a27] to-transparent z-[35]'></div>
             <div className='w-full h-full absolute flex flex-col md:flex-row'>
                 <div className='flex flex-col w-full h-full md:w-2/3 justify-end py-4 z-50 lg:justify-end pb-40 px-5 gap-7'>
                     {/* <div className='flex flex-col'>
