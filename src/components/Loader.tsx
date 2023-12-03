@@ -41,7 +41,6 @@ export const showLoader = (show:Boolean) => {
         }
     } else {
         if(!isNullOrUndefined(loader)) {
-            console.log("loader ===>", loader)
             document.body.removeChild(loader)
         }
     }

@@ -1,11 +1,10 @@
 'use client'
 import '../globals.css'
 import '@/assets/global.scss'
-import { Navbar, Transition } from '@/components'
+import { Navbar, Transition, Footer } from '@/components'
 import { AnimatePresence } from 'framer-motion'
 import '@/assets/cursor.scss'
 import { Calistoga, Nunito, Metrophobic } from "next/font/google";
-
 const calistoga = Metrophobic({weight:'400', subsets: ['latin']}) 
 
 export default function RootLayout({
@@ -25,6 +24,7 @@ export default function RootLayout({
                             {children}
                         </Transition>
                     </AnimatePresence>
+                    <Footer/>
                 </body>
             </html>
     )

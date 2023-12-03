@@ -4,13 +4,16 @@ import React from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { omdbApiCall, defaultZurgiinKhemjeegeerHeightBodyo, cycleArray, isNullOrUndefined } from '@/utility'
 import { getFilmInfo } from '@/server-actions'
-import { showLoader, Divider } from '@/components'
+import { showLoader, Divider, Cursor } from '@/components'
 import Image from 'next/image'
+import { useLocalStorage } from '@mantine/hooks'
+
 var interval:NodeJS.Timeout|undefined
 function Page(props:any) {
     const {params} = props
     const [filmData, setFilmData] = React.useState<any>(undefined)
     const [activeImage, setActiveImage] = React.useState<any>(undefined)
+    const [language, setLanguage] = useLocalStorage({'key': 'language', defaultValue: 'en'})
     React.useEffect(() => {
         if(!isNullOrUndefined(filmData)) {
             if(interval) {
@@ -54,10 +57,9 @@ function Page(props:any) {
         return l;
     };
 
-    console.log({filmData})
-
     return (
         <div className='flex flex-col'>
+            <Cursor isGelly/>
             <div className='w-full h-[500px] relative overflow-hidden'>
                 <div className='absolute z-10 bg-gradient-to-t from-[#1c1a27] to-transparent w-full h-full '/>
                 <AnimatePresence mode='wait'>
@@ -79,14 +81,14 @@ function Page(props:any) {
                     {
                         filmData?.Status === 'onstream' ? <div className='flex flex-col items-center gap-2'>
                             <h2 className='text-xl font-semibold w-full border-b text-center border-b-zinc-500 py-2'>
-                                watch online
+                                {language === 'en' ? 'watch online' : 'онлайнаар үзэх'}
                             </h2>
                             {filmData.Links && filmData.Links.map((x:any, i:any) => {
                                 return <a href={x} target='_blank' key={i} className='rounded w-full py-2 text-2xl text-center bg-cyan-400 text-cyan-950 font-bold'>{getSite(x).hostname.replace(/(https?:\/\/)?(www.)?/i, '')}</a>
                             }) }
                         </div> : filmData?.Status === 'intheater' ? <div className='flex flex-col items-center gap-2'>
                             <h2 className='text-xl font-semibold w-full border-b text-center border-b-zinc-500 py-2'>
-                                Buy ticket
+                                {language === 'en' ? 'Buy ticket' : 'тасалбар захиалах'}
                             </h2>
                             {filmData.Links && filmData.Links.map((x:any, i:any) => {
                                 return <a href={x} target='_blank' key={i} className='rounded w-full py-2 text-2xl text-center bg-cyan-400 text-cyan-950 font-bold'>{getSite(x).hostname.replace(/(https?:\/\/)?(www.)?/i, '')}</a>
@@ -108,15 +110,14 @@ function Page(props:any) {
                         </div>
 
                     </div>
-                    <div className=''>
-                        {filmData?.Plot}
+                    <div className='' dangerouslySetInnerHTML={{__html: language === 'en' ? filmData?.Plot : filmData?.MnPlot}}>
                     </div>
                     {
                         !isNullOrUndefined(filmData?.Trailer) && <div className='aspect-video rounded overflow-hidden'>
                             <iframe className='w-full h-full' src={`https://www.youtube.com/embed/${filmData.Trailer}`} title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
                         </div>
                     }
-                    <Divider text='Images'/>
+                    <Divider text={language === 'en' ? 'Images' : 'Зураг'}/>
                     <div className='columns-3 w-full h-fit pb-12 rounded overflow-hidden gap-1 !text-zinc-800 gap-y-2'>
                             {filmData?.Images.map((x:any, i:number) => {
                                 return <motion.div initial={{scale: 0}} animate={{scale: 1}} layout key={i} className='group rounded overflow-hidden relative cursor-pointer mb-2'>

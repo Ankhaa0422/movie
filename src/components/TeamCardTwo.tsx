@@ -1,6 +1,6 @@
 function TeamCardTwo({data}:{data:any}) {
     return <div className="teamCard">
-        <div className="rounded-full w-[150px] h-[150px] overflow-hidden">
+        <div className="rounded-full w-[120px] h-[120px] overflow-hidden">
             <img src={data.Image} alt="Alexandra Smith"/>
         </div>
         <h2>{data.Name}</h2>

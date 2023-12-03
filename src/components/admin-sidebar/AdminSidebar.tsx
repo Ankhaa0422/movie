@@ -7,7 +7,8 @@ function AdminSideBar() {
     const list = [
         {icon: 'solar:tablet-broken', href: '/dashboard', name: 'Хянах самбар'},
         {icon: 'solar:layers-minimalistic-broken', href: '/dashboard/film-list', name: 'Кино жагсаалт'},
-        {icon: 'solar:calendar-broken', href: '/calendar', name: 'Календар'},
+        {icon: 'solar:calendar-broken', href: '/dashboard/calendar', name: 'Календар'},
+        {icon: 'carbon:event', href: '/dashboard/event', name: 'Эвэнт'},
     ]
 
     return <div className="w-[300px] min-w-[300px] h-screen bg-[#212430] flex flex-col">

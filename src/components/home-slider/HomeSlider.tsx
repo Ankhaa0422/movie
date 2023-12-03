@@ -21,8 +21,6 @@ function HomeSlider ({sliderData, initData}:Props) {
         data: initData,
         index: 0,
       });
-  
-      console.log(transitionData, currentSlideData, data)
 
     return <div className='max-h-screen min-h-screen h-screen relative'>
         <AnimatePresence>

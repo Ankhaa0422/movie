@@ -94,6 +94,8 @@ export default function Page (props:any) {
     const types = [
         {value: 'series', name: 'series'},
         {value: 'movie', name: 'movie'},
+        {value: 'original', name: 'original'},
+        {value: 'anime', name: 'anime'},
     ]
 
     const status = [
@@ -191,7 +193,6 @@ export default function Page (props:any) {
     }
 
     const getLink = (e:any) => {
-        console.log(e.target.value)
         if(e.target.value != '') {
             links.push(e.target.value)
         } 
@@ -200,7 +201,6 @@ export default function Page (props:any) {
     }
 
     const getLinkValue = (value:string) => {
-        console.log("value ===>", value)
         setLink(value)
     }
 
@@ -210,7 +210,6 @@ export default function Page (props:any) {
     }
 
     const getPoster = async (event:any) => {
-        console.log(event.target.files[0])
         const list = [...event.target.files]
         const blob:any = await convertImage(list[0])
         const link = await uploadPoster(list[0], blob)

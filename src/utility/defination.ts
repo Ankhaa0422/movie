@@ -242,4 +242,51 @@ export const countries = [
     {name: 'Yemen', value: 'Yemen',}, 
     {name: 'Zambia', value: 'Zambia',}, 
     {name: 'Zimbabwe', code: 'ZW'} 
-  ]   
+]
+
+export const siteLanguage:any = {
+    home: {
+      en: 'Home',
+      mn: 'Нүүр хуудас'
+    },
+    about: {
+      en: 'About',
+      mn: 'Бидний тухай'
+    },
+    filmLibrary: {
+      en: 'Film library',
+      mn: 'Кино сан'
+    },
+    contact: {
+      en: 'Contact us',
+      mn: 'Холбоо барих'
+    },
+    partner: {
+      en: 'Our partner',
+      mn: 'Хамтрагч байгууллага'
+    },
+    team: {
+      en: 'Our team',
+      mn: 'Баг хамт олон'
+    },
+    who: {
+      en: 'Who we are',
+      mn: 'Бид хэн бэ'
+    },
+    intheater: {
+      en: 'In Theater',
+      mn: 'Гарч буй'
+    },
+    upcoming: {
+      en: 'Upcoming',
+      mn: 'Шинээр гарах'
+    },
+    onstream: {
+      en: 'On Stream',
+      mn: 'Онлайн'
+    },
+    original: {
+      en: 'Original',
+      mn: 'Original'
+    }
+}

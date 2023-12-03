@@ -347,7 +347,6 @@ export const Cursor: FC<CursorProps> = ({
         textColorElements.forEach(el => {
             el.addEventListener('mouseenter', (e: MouseEvent) => {
                 if (e.target instanceof HTMLElement && cursorInner.current) {
-                    console.log('text color dataset ======>', e.target.dataset['cursorTextcolor'])
                     gsap.to(`#${cursorInner.current.id}`, {
                         color: `${e.target.dataset['cursorTextcolor']}`,
                         duration: colorAnimationDuration,

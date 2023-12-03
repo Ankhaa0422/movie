@@ -36,7 +36,7 @@ function FilmCard ({data}:{data:any}) {
     return <motion.div
         id={data.imdbID}
         ref={cardRef}
-        className="relative rounded-sm shadow-md w-full cursor-pointer overflow-hidden"
+        className="relative rounded shadow-md w-full cursor-pointer overflow-hidden"
         layout
         initial={false}
         onHoverStart={() => {setHover(true)}}

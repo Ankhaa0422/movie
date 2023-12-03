@@ -8,7 +8,6 @@ export async function login(email:string = '', password:string = '') {
     try {
         data = await signInWithEmailAndPassword(auth, email, password)
         const idTokenResult = await data.user.getIdTokenResult();
-        console.log(idTokenResult, data)
         await fetch("/api/login", {
             method: "GET",
             headers: {

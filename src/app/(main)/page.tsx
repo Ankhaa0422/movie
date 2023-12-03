@@ -6,6 +6,9 @@ import { deepClone, isNullOrUndefined, omdbApiCall } from '@/utility'
 import { motion } from 'framer-motion'
 import { renderToString } from 'react-dom/server'
 import { getHomeList } from '@/server-actions'
+import SliderTwo from '@/components/SliderTwo'
+import { siteLanguage } from '@/utility/defination'
+import { useLocalStorage } from '@mantine/hooks'
 let dummyJagsaalt:any[] = []
 export default function Home() {
 
@@ -13,9 +16,10 @@ export default function Home() {
     const [listData, setListData] = React.useState<any>({
         upcomingList: [],
         onStreamList: [],
-        inTheaterList: []
+        inTheaterList: [],
+        originalList: []
     })
-
+    const [language, setLanguage] = useLocalStorage({'key': 'language', defaultValue: 'en'})
     React.useEffect(() => {
         showLoader(true)
         async function getData() {
@@ -24,6 +28,7 @@ export default function Home() {
                 listData.upcomingList = result.upcomingData
                 listData.onStreamList = result.onStreamData
                 listData.inTheaterList = result.inTheaterData
+                listData.originalList = result.originalData
                 setSliderData(result.sliderData)
                 setListData({...listData})
             }
@@ -33,26 +38,22 @@ export default function Home() {
         })
     }, [])
 
-    console.log(listData, sliderData)
-
     return (
         // <Transition layout direction='left' outDirection='left'>
         <>
             <Cursor isGelly/>
             <main className={`relative h-fit select-none overflow-hidden text-white antialiased`}>
                 <div className='max-h-screen min-h-screen h-screen relative'>
-                    {/* {
-                        sliderData.length > 0 && <HomeSlider sliderData={sliderData} initData={sliderData[0]} />
-                    } */}
                     {
                         sliderData.length > 0 && <TestSlider data={sliderData} />
                     }
                     
                 </div>
                 <div className='container mx-auto mt-10 mb-10 flex flex-col'>
-                    <TestHome text='In Theater' datas={listData.inTheaterList}/>
-                    <TestHome text='On Stream' datas={listData.onStreamList}/>
-                    <TestHome text='Upcoming' datas={listData.upcomingList}/>
+                    {listData.originalList.length > 0 && <TestHome text={siteLanguage['original'][language]} datas={listData.originalList}/>}
+                    {listData.upcomingList.length > 0 && <TestHome text={siteLanguage['upcoming'][language]} datas={listData.upcomingList}/>}
+                    {listData.inTheaterList.length > 0 && <TestHome text={siteLanguage['intheater'][language]} datas={listData.inTheaterList}/>}
+                    {listData.onStreamList.length > 0 && <TestHome text={siteLanguage['onstream'][language]} datas={listData.onStreamList}/>}
                 </div>
             </main>
         </>

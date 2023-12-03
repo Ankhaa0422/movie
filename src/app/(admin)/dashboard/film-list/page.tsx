@@ -15,8 +15,8 @@ function Page() {
     }, [])
 
     async function getData() {
-        const result:any[] = await getFilmList(null)
-        setState(result)
+        const result:any = await getFilmList(null)
+        setState(result.datas)
     }
 
     const modalOnClose = () => {

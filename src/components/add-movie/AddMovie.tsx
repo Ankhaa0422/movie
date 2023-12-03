@@ -12,7 +12,6 @@ import dynamic from 'next/dynamic';
 import { addFilm, uploadPoster } from '@/server-actions';
 let timeout:NodeJS.Timeout|undefined
 export default function AddMovie (props:any) {
-    console.log(props)
     const focusTrapRef = useFocusTrap();
     const ReactQuill = React.useMemo(() => dynamic(() => import('react-quill'), { ssr: false }),[]);
     const [state, setState] = React.useState<object|any>({
@@ -69,6 +68,8 @@ export default function AddMovie (props:any) {
     const types = [
         {value: 'series', name: 'series'},
         {value: 'movie', name: 'movie'},
+        {value: 'original', name: 'original'},
+        {value: 'anime', name: 'anime'},
     ]
 
     const status = [
@@ -166,7 +167,6 @@ export default function AddMovie (props:any) {
     }
 
     const getLink = (e:any) => {
-        console.log(e.target.value)
         if(e.target.value != '') {
             links.push(e.target.value)
         } 
@@ -175,7 +175,6 @@ export default function AddMovie (props:any) {
     }
 
     const getLinkValue = (value:string) => {
-        console.log("value ===>", value)
         setLink(value)
     }
 
@@ -185,7 +184,6 @@ export default function AddMovie (props:any) {
     }
 
     const getPoster = async (event:any) => {
-        console.log(event.target.files[0])
         const list = [...event.target.files]
         const blob:any = await convertImage(list[0])
         const link = await uploadPoster(list[0], blob)

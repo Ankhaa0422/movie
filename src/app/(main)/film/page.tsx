@@ -2,45 +2,49 @@
 'use client'
 import React from 'react'
 import { omdbApiCall, deepClone, isNullOrUndefined } from '@/utility'
-import { FilmCard, Transition, Icon, Cursor } from '@/components'
+import { FilmCard, Transition, Icon, Cursor, showLoader } from '@/components'
 import { useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
 import { getFilmList } from '@/server-actions';
+import { siteLanguage } from '@/utility/defination';
+import { useLocalStorage } from '@mantine/hooks';
 let dummyJagsaalt:any[] = []
 export default function Page() {
     
+    const [language, setLanguage] = useLocalStorage({'key': 'language', defaultValue: 'en'})
     const [state, setState] = React.useState<any[]>([])
-    const mountRef = React.useRef(false)
+    const [lastKey, setLastKey] = React.useState<any>(undefined)
     const params = useSearchParams()
-    const [open, setOpen] = React.useState(false)
-    console.log(params.get('status'))
     React.useEffect(() => {
         async function getData() {
-            const result:any[] = await getFilmList(params.get('status'))
-            setState(result)
+            showLoader(true)
+            const result:any = await getFilmList(params.get('status'))
+            setState(result.datas)
+            setLastKey(result.lastKey)
         }
         getData()
+        showLoader(false)
     }, [params])
 
     const tabs = [
         {
-            ner: 'All',
+            ner: language === 'en' ? 'All' : 'Бүх',
             khoch: 'all',
             icon: 'ic:outline-movie-filter'
         },
         {
-            ner: 'In Theater',
+            ner: siteLanguage['intheater'][language],
             khoch: 'intheater',
             icon: 'bx:camera-movie'
         },
         {
-            ner: 'Upcoming',
+            ner: siteLanguage['upcoming'][language],
             khoch: 'upcoming',
             icon: 'ic:outline-movie-filter'
         },
         {
-            ner: 'On stream',
+            ner: siteLanguage['onstream'][language],
             khoch: 'onstream',
             icon: 'ic:outline-movie-filter'
         },
@@ -55,7 +59,7 @@ export default function Page() {
                     <div className='flex flex-row items-center w-full gap-2'>
                             {
                                 tabs.map((x, i) => {
-                                    return <Link key={i} href={x.ner === 'All' ? "/film" : `?status=${x.khoch}`} data-cursor-size={'70px'}>
+                                    return <Link key={i} href={x.khoch === 'all' ? "/film" : `?status=${x.khoch}`} data-cursor-size={'70px'}>
                                         <motion.div
                                             initial={false} 
                                             className='text-[1.5rem] relative cursor-pointer px-4 ease-out py-1 gap-2 flex flex-row items-center text-[#333333] hover:text-[#555555] dark:text-gray-100 dark:hover:text-gray-300 transition-all'
@@ -75,7 +79,7 @@ export default function Page() {
                     {
                         state.map((x, i) => {
                             return <div key={i} data-cursor-size='80px'
-                                data-cursor-text={'View'}
+                                data-cursor-text={language === 'en' ? 'View' : 'Үзэх'}
                                 data-cursor-textcolor={'#000'}
                                 data-cursor-color='#ffffffaa'
                                 data-cursor-backdropblur="4px"
