@@ -25,7 +25,7 @@ export const omdbApiCall = (id:string) => {
 }
 
 async function getFilmInfo(id:string, resolve:Function) {
-    await fetch(`http://www.omdbapi.com/?i=${id}&plot=full&apikey=${process.env.OMDB_API}`).then(result => {
+    await fetch(`https://www.omdbapi.com/?i=${id}&plot=full&apikey=${process.env.OMDB_API}`).then(result => {
         result.json().then(movie => {
             return resolve(movie)
         })
